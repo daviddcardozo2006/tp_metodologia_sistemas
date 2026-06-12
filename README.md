@@ -74,7 +74,34 @@ git log --all --merges --oneline
 
 ## Cantidad de conflictos producidos
 
-// TODO
+<table>
+<tr>
+<th>COMANDO</th>
+<th>SALIDA</th>
+</tr>
+<tr>
+<td>
+
+```bash
+git status
+```
+
+</td>
+<td>
+
+```
+On branch feature/indice
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+Unmerged paths:
+        both modified:   indice.md
+```
+
+</td>
+</tr>
+</table>
+
+> Se forzó y resolvió 1 conflicto crítico de sincronización en el archivo indice.md
 
 ---
 
@@ -144,4 +171,32 @@ d5948e4 (origin/feature/branching-commands) fix: separar los comandos en archivo
 
 ## Captura de un conflicto previo a su resolución, indicando el hash del commit asociado
 
-// TODO
+<table>
+<tr>
+<th>COMANDO</th>
+<th>SALIDA</th>
+</tr>
+<tr>
+<td>
+
+```bash
+git log --graph --oneline --all -n 5
+```
+
+</td>
+<td>
+
+```
+* 1d912 (HEAD -> feature/indice, origin/feature/indice) fix: resolver colision de sincronizacion en indice
+|\
+| * 31818 docs: inyectar arbol
+| 2c987 feat: inyectar arbol grafico
+|/
+820bf docs: generar indices de modulos
+```
+
+</td>
+</tr>
+</table>
+
+> Evidencia de colisión en el entorno de desarrollo: Intentamos generar el índice de archivos y módulos del repositorio. Al correr el comando, los nodos 31818 y 2c987 colisionaron y el merge automático falló, por lo que tuvimos que resolverlo a mano. El commit resultante quedó registrado con el hash 1d912.
