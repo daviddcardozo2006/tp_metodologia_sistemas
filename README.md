@@ -27,16 +27,17 @@ git shortlog -sn --all
 <td>
 
 ```
-12  Naim Neman
-9   David Cardozo
-7   Alejo Simos
+    14  David
+    14  naimneman99
+    10  alesi753
 ```
 
 </td>
 </tr>
 </table>
 
-> Naim Neman realizó la mayor cantidad de commits, con un total de **12**.
+> Tanto David como Naim realizaron la mayor cantidad de commits, con un total de **14** cada uno.
+> Igualmente, hay una diferencia entre los commits locales y los del repositorio en Github que pueden visualizar dentro de Github Insights.
 
 ---
 
@@ -51,13 +52,17 @@ git shortlog -sn --all
 <td>
 
 ```bash
-git log --all --merges --oneline
+git log --all --merges --oneline | grep Merge
 ```
 
 </td>
 <td>
 
 ```
+af4edb7 Merge pull request #8 from daviddcardozo2006/develop
+a3f6c3f Merge branch 'develop' into staging_branch
+08c3698 Merge pull request #6 from daviddcardozo2006/feature/staging_commands
+d1d6a96 Merge pull request #5 from daviddcardozo2006/feature/indice
 345677e Merge pull request #4 from daviddcardozo2006/feature/branching-commands
 667af9a Merge pull request #3 from daviddcardozo2006/feature/docs-merging
 43369b3 Merge pull request #2 from daviddcardozo2006/feature/commits_commands
@@ -68,40 +73,15 @@ git log --all --merges --oneline
 </tr>
 </table>
 
-> Se realizaron un total de **3** merges en el repositorio.
+> Se realizaron un total de **8** merges en el repositorio.
 
 ---
 
 ## Cantidad de conflictos producidos
 
-<table>
-<tr>
-<th>COMANDO</th>
-<th>SALIDA</th>
-</tr>
-<tr>
-<td>
-
-```bash
-git status
-```
-
-</td>
-<td>
-
-```
-On branch feature/indice
-You have unmerged paths.
-  (fix conflicts and run "git commit")
-Unmerged paths:
-        both modified:   indice.md
-```
-
-</td>
-</tr>
-</table>
-
-> Se forzó y resolvió 1 conflicto crítico de sincronización en el archivo indice.md
+> Se forzó y resolvió 1 conflicto a la hora de señalar el mismo archivo staging/mv.md desde dos ramas. Donde a la hora de
+> cometer el PR dentro de Github el auto-merge falló. Luego hubieron dos alternativas, editar las lineas de texto conflictivas
+> del archjivo y luego mergear o simplemente descartar el PR. Por simplicidad fuimos con la segunda opción.
 
 ---
 
@@ -116,7 +96,7 @@ Unmerged paths:
 <td>
 
 ```bash
-git branch -r | grep -v HEAD | wc -l
+git branch -r | grep -v HEAD
 ```
 
 </td>
@@ -127,13 +107,17 @@ git branch -r | grep -v HEAD | wc -l
   origin/feature/branching-commands
   origin/feature/commits_commands
   origin/feature/docs-merging
+  origin/feature/indice
   origin/feature/staging_commands
   origin/main
+  origin/staging_branch
 ```
 
 </td>
 </tr>
 </table>
+
+> La cantidad de ramas existentes es de **8**.
 
 ---
 
