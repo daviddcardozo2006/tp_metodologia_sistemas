@@ -1,5 +1,26 @@
 
-# Indice del Proyecto
+# Indice del Proyecto -
+📦 tp_metodologia_sistemas
+┣ 📂 branching
+┃ ┣ 📜 branch.md
+┃ ┣ 📜 checkout.md
+┃ ┣ 📜 merge.md
+┃ ┣ 📜 rebase.md
+┃ ┗ 📜 switch.md
+┣ 📂 commits
+┃ ┣ 📜 commit.md
+┃ ┣ 📜 diff.md
+┃ ┗ 📜 log.md
+┣ 📂 merging
+┃ ┣ 📜 diferencia.md
+┃ ┣ 📜 merge.md
+┃ ┗ 📜 rebase.md
+┣ 📂 staging
+┃ ┣ 📜 add.md
+┃ ┣ 📜 restore.md
+┃ ┗ 📜 status.md
+┣ 📜 indice.md
+┗ 📜 README.md
 
 ## Introduccion
 Este repositorio centraliza la documentacion sobre la arquitectura y uso de comandos de Git. El sistema esta estructurado en cuatro modulos principales: operaciones de preparacion de entorno (staging), navegacion entre ramas (branching), snapshots del estado (commits) e integracion de codigo (merging).
