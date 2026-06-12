@@ -1,31 +1,56 @@
-git mv
-Permite renombrar archivos o moverlos de directorio sin perder el rastro de su historial en Git.
+## git mv
 
-¿Para qué sirve?
-En vez de borrar un archivo y crear uno nuevo (lo cual Git interpreta como dos operaciones separadas: delete + add), git mv le avisa a Git que se trata del mismo archivo que cambió de ubicación o nombre. Esto es importante porque git log --follow puede seguir el historial completo de un archivo incluso después de haber sido movido.
+Mueve o renombra un archivo dentro del repositorio, conservando su historial de cambios.
 
-Sintaxis
-git mv <archivo-origen> <archivo-destino>
+### Manual
 
+- `git mv {origen} {destino}`: _mueve o renombra el archivo_
+- `git mv -f {origen} {destino}`: _mueve el archivo aunque el destino exista_
 
-Caso de uso real en este repositorio
-Durante el desarrollo, el archivo commit.md quedó ubicado en la raíz del proyecto por error, cuando debía estar dentro de commits/. La corrección se hizo así:
+### Ejemplo
 
-git mv commit.md commits/commit.md
-git commit -m "fix: move commit.md to commits/ directory"
+- **Situación:** `commit.md` fue commiteado por error en el directorio raíz y necesita moverse a `commits/`.
 
+**`git mv commit.md commits/commit.md`**
 
-Resultado en git status:
-renamed: commit.md -> commits/commit.md
+<table>
+<tr>
+<th>ANTES</th>
+<th>DESPUES</th>
+</tr>
+<tr>
+<td>
 
+```bash
+$ git status
+On branch feature/commits_commands
+nothing to commit, working tree clean
 
-Diferencia con mover manualmente
-Si en cambio se hubiera hecho:
-mv commit.md commits/commit.md
-git add commits/commit.md
-git add commit.md  # marca el original como eliminado
+$ ls
+commit.md
+commits/
+staging/
+```
 
-Git también detecta esto como un rename en la mayoría de los casos (gracias a la heurística de similitud de contenido), pero git mv es más explícito y no depende de esa detección automática.
+</td>
+<td>
 
-💡 Podés ver el historial completo del archivo, incluso antes de moverse, con:
-git log --follow commits/commit.md
+```bash
+$ git status
+On branch feature/commits_commands
+Changes to be committed:
+  renamed: commit.md -> commits/commit.md
+
+$ ls
+commits/
+staging/
+```
+
+</td>
+</tr>
+</table>
+
+> A diferencia de hacer `mv` desde la terminal y luego `git add` por separado,
+> `git mv` registra el movimiento como un _rename_ directamente, lo que
+> Git usa para preservar el historial del archivo con `git log --follow`.
+
